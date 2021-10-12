@@ -6,7 +6,8 @@ import { HomeComponent } from './home.component';
 
 const routes: Routes = [
    { path: '', redirectTo: '/home', pathMatch: 'full' },
-   { path: 'home', component: HomeComponent }
+   { path: 'home', component: HomeComponent },
+	{ path: 'nfc', loadChildren: () => import('./plugin-demos/nfc.module').then(m => m.NfcModule) }
 ];
 
 @NgModule({

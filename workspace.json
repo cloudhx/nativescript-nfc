@@ -78,14 +78,16 @@
       "projectType": "application",
       "targets": {
         "build": {
+          "executor": "@nrwl/workspace:run-commands",
           "outputs": [
             "dist/packages"
           ],
           "options": {
-            "commands": [],
+            "commands": [
+              "nx run nfc:build.all"
+            ],
             "parallel": false
-          },
-          "executor": "@nrwl/workspace:run-commands"
+          }
         },
         "focus": {
           "outputs": [
@@ -101,6 +103,51 @@
         }
       },
       "sourceRoot": ""
+    },
+    "nfc": {
+      "root": "packages/nfc",
+      "projectType": "library",
+      "sourceRoot": "packages/nfc",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/node:package",
+          "options": {
+            "outputPath": "dist/packages/nfc",
+            "tsConfig": "packages/nfc/tsconfig.json",
+            "packageJson": "packages/nfc/package.json",
+            "main": "packages/nfc/index.d.ts",
+            "assets": [
+              "packages/nfc/*.md",
+              "packages/nfc/index.d.ts",
+              "LICENSE",
+              {
+                "glob": "**/*",
+                "input": "packages/nfc/platforms/",
+                "output": "./platforms/"
+              }
+            ]
+          }
+        },
+        "build.all": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx run nfc:build",
+              "node tools/scripts/build-finish.ts nfc"
+            ],
+            "parallel": false
+          }
+        },
+        "focus": {
+          "executor": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              "nx g @nativescript/plugin-tools:focus-packages nfc"
+            ],
+            "parallel": false
+          }
+        }
+      }
     }
   },
   "cli": {

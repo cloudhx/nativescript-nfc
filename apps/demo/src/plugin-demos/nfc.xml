@@ -1,0 +1,29 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="nfc" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <ScrollView>
+    <StackLayout>
+
+      <Image margin="0" src="~/res/nfc.png" width="60%" horizontalAlignment="center" />
+
+      <StackLayout orientation="horizontal" width="100%">
+        <Button text="NFC available?" tap="{{ doCheckAvailable }}" class="button button-a" width="40%" />
+        <Button text="NFC enabled?" tap="{{ doCheckEnabled }}" class="button button-a" width="40%" />
+      </StackLayout>
+
+      <StackLayout orientation="horizontal" width="100%">
+        <Button text="set ndef listener" tap="{{ doStartNdefListener }}" class="button" width="40%"/>
+        <Button text="clear ndef listener" tap="{{ doStopNdefListener }}" class="button" width="40%"/>
+      </StackLayout>
+
+      <StackLayout orientation="horizontal" width="100%">
+        <Button text="write Text" tap="{{ doWriteText }}" class="button button-d" width="40%" />
+      </StackLayout>
+
+      <Label text="{{ lastNdefDiscovered }}" class="message message-ndef" textWrap="true" />
+
+    </StackLayout>
+  </ScrollView>
+</Page>

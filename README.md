@@ -24,7 +24,7 @@ npm run setup
 npm start
 ```
 
-- @nativescript
+- [@nativescript/nfc](packages/nfc/README.md)
 
 # How to use?
 
